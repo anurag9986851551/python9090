@@ -1,0 +1,354 @@
+Python String
+In Python, Strings are arrays of bytes representing Unicode characters
+
+Accessing characters in Python
+In Python, individual characters of a String can be accessed by using the method of Indexing
+
+# Printing characters between  
+# 3rd and 2nd last character 
+print("\nSlicing characters between " +
+    "3rd and 2nd last character: ") 
+print(String1[3:-2]) 
+
+
+
+Deleting/Updating from a String
+In Python, Updation or deletion of characters from a String is not allowed. This will cause an error because item assignment or item deletion from a String is not supported. Although deletion of entire String is possible with the use of a built-in del keyword. This is because Strings are immutable
+
+Escape Sequencing in Python
+While printing Strings with single and double quotes in it causes SyntaxError because String already contains Single and Double Quotes and hence cannot be printed with the use of either of these. Hence, to print such a String either Triple Quotes are used or Escape sequences are used to print such Strings.
+Escape sequences start with a backslash and can be interpreted differently. If single quotes are used to represent a string, then all the single quotes present in the string must be escaped and same is done for Double Quotes.
+# Python Program for 
+# Escape Sequencing 
+# of String 
+
+# Initial String 
+String1 = '''I'm a "Geek"'''
+print("Initial String with use of Triple Quotes: ") 
+print(String1) 
+
+# Escaping Single Quote 
+String1 = 'I\'m a "Geek"'
+print("\nEscaping Single Quote: ") 
+print(String1) 
+
+# Escaping Doule Quotes 
+String1 = "I'm a \"Geek\""
+print("\nEscaping Double Quotes: ") 
+print(String1) 
+
+# Printing Paths with the 
+# use of Escape Sequences 
+String1 = "C:\\Python\\Geeks\\"
+print("\nEscaping Backslashes: ") 
+print(String1) 
+
+
+To ignore the escape sequences in a String, r or R is used, this implies that the string is a raw string and escape sequences inside it are to be ignored.
+
+# Printing Geeks in HEX 
+String1 = "This is \x47\x65\x65\x6b\x73 in \x48\x45\x58"
+print("\nPrinting in HEX with the use of Escape Sequences: ") 
+print(String1) 
+
+# Using raw String to 
+# ignore Escape Sequences 
+String1 = r"This is \x47\x65\x65\x6b\x73 in \x48\x45\x58"
+print("\nPrinting Raw String in HEX Format: ") 
+print(String1) 
+
+
+Formatting of Strings
+Strings in Python can be formatted with the use of format() method which is very versatile and powerful tool for formatting of Strings. Format method in String contains curly braces {} as placeholders which can hold arguments according to position or keyword to specify the order.
+
+# Python Program for 
+# Formatting of Strings 
+
+# Default order 
+String1 = "{} {} {}".format('Geeks', 'For', 'Life') 
+print("Print String in default order: ") 
+print(String1) 
+
+# Positional Formatting 
+String1 = "{1} {0} {2}".format('Geeks', 'For', 'Life') 
+print("\nPrint String in Positional order: ") 
+print(String1) 
+
+# Keyword Formatting 
+String1 = "{l} {f} {g}".format(g = 'Geeks', f = 'For', l = 'Life') 
+print("\nPrint String in order of Keywords: ") 
+print(String1) 
+
+
+
+# Formatting of Integers 
+String1 = "{0:b}".format(16) 
+print("\nBinary representation of 16 is ") 
+print(String1) 
+
+# Formatting of Floats 
+String1 = "{0:e}".format(165.6458) 
+print("\nExponent representation of 165.6458 is ") 
+print(String1) 
+
+# Rounding off Integers 
+String1 = "{0:.2f}".format(1/6) 
+print("\none-sixth is : ") 
+print(String1) 
+
+
+
+# Python Program for 
+# Old Style Formatting 
+# of Integers 
+
+Integer1 = 12.3456789
+print("Formatting in 3.2f format: ") 
+print('The value of Integer1 is %3.2f' %Integer1) 
+print("\nFormatting in 3.4f format: ") 
+print('The value of Integer1 is %3.4f' %Integer1) 
+
+
+What is a Docstring?
+Python documentation strings (or docstrings) provide a convenient way of associating documentation with Python modules, functions, classes, and methods.
+It’s specified in source code that is used, like a comment, to document a specific segment of code. Unlike conventional source code comments, the docstring should describe what the function does, not how.
+What should a docstring look like?
+
+The doc string line should begin with a capital letter and end with a period.
+The first line should be a short description.
+If there are more lines in the documentation string, the second line should be blank, visually separating the summary from the rest of the description.
+The following lines should be one or more paragraphs describing the object’s calling conventions, its side effects, etc.
+def my_function(): 
+	"""Demonstrates docstrings and does nothing really."""
+
+	return None
+
+print "Using __doc__:"
+print my_function.__doc__ 
+
+print "Using help:"
+help(my_function) 
+
+
+Docstrings in Classes
+
+Let us take an example to show how to write docstrings for a class and its methods. help is used to access the docstring.
+
+class ComplexNumber: 
+	""" 
+	This is a class for mathematical operations on complex numbers. 
+	
+	Attributes: 
+		real (int): The real part of complex number. 
+		imag (int): The imaginary part of complex number. 
+	"""
+
+	def __init__(self, real, imag): 
+		""" 
+		The constructor for ComplexNumber class. 
+
+		Parameters: 
+		real (int): The real part of complex number. 
+		imag (int): The imaginary part of complex number. 
+		"""
+
+	def add(self, num): 
+		""" 
+		The function to add two Complex Numbers. 
+
+		Parameters: 
+			num (ComplexNumber): The complex number to be added. 
+		
+		Returns: 
+			ComplexNumber: A complex number which contains the sum. 
+		"""
+
+		re = self.real + num.real 
+		im = self.imag + num.imag 
+
+		return ComplexNumber(re, im) 
+
+help(ComplexNumber) # to access Class docstring 
+help(ComplexNumber.add) # to access method's docstring 
+
+
+String slicing in Python to check if a string can become empty by recursive deletion
+Input  : str = "GEEGEEKSKS", sub_str = "GEEKS"
+Output : Yes
+Explanation : In the string GEEGEEKSKS, we can first 
+              delete the substring GEEKS from position 4.
+              The new string now becomes GEEKS. We can 
+              again delete sub-string GEEKS from position 1. 
+              Now the string becomes empty.
+			  
+			 
+# Python3 program to check if a string can be 
+# converted to an empty string by deleting 
+# given sub-string from any position, any 
+# number of times. 
+
+# Returns true if str can be made empty by 
+# recursively removing sub_str. 
+def canBecomeEmpty(string, sub_str): 
+	while len(string) > 0: 
+
+		# idx: to store starting index of sub- 
+		#	 string found in the original string 
+		idx = string.find(sub_str) 
+
+		if idx == -1: 
+			break
+
+		# Erasing the found sub-string from 
+		# the original string 
+		string = string.replace(sub_str, "", 1) 
+
+	return (len(string) == 0) 
+
+# Driver code 
+if __name__ == "__main__": 
+	string = "GEEGEEKSKS"
+	sub_str = "GEEKS"
+	if canBecomeEmpty(string, sub_str): 
+		print("Yes") 
+	else: 
+		print("No") 
+
+# This code is contributed by 
+# sanjeev2552 
+
+---------------------------------------------
+# Python program to count all duplicates from string using hashing 
+NO_OF_CHARS = 256
+
+# Fills count array with frequency of characters 
+def fillCharCounts(string, count): 
+	for i in string: 
+		count[ord(i)] += 1
+	return count 
+
+# Print duplicates present in the passed string 
+def printDups(string): 
+	# Create an array of size 256 and fill count of every character in it 
+	count = [0] * NO_OF_CHARS 
+	count = fillCharCounts(string,count) 
+
+	# Utility Variable 
+	k = 0
+
+	# Print characters having count more than 0 
+	for i in count: 
+		if int(i) > 1: 
+			print chr(k) + ", count = " + str(i) 
+		k += 1
+
+
+
+# Driver program to test the above function 
+string = "test string"
+print printDups(string) 
+
+# This code is contributed by Bhavya Jain 
+---------------
+from collections import Counter 
+
+def find_dup_char(input): 
+
+	# now create dictionary using counter method 
+	# which will have strings as key and their 
+	# frequencies as value 
+	WC = Counter(input) 
+	j = -1
+	
+	
+	# Finding no. of occurrence of a character 
+	# and get the index of it. 
+	for i in WC.values(): 
+		j = j + 1
+		if( i > 1 ): 
+			print WC.keys()[j], 
+
+# Driver program 
+if __name__ == "__main__": 
+	input = 'geeksforgeeks'
+	find_dup_char(input) 
+
+---------         -----------	--------------      ------------------
+Python Counter| Find duplicate rows in a binary matrix
+
+# Function to find duplicate rows in a binary matrix 
+from collections import Counter 
+
+def duplicate(input): 
+
+	# since lists are unhasable for counter method 
+	# because lists are mutable so first we will cast 
+	# each row (list) into tuple 
+	input = map(tuple,input) 
+
+	# now create dictionary 
+	freqDict = Counter(input) 
+
+	# print all rows having frequency greater than 1 
+	for (row,freq) in freqDict.items(): 
+		if freq>1: 
+			print (row) 
+
+# Driver program 
+if __name__ == "__main__": 
+	input = [[1, 1, 0, 1, 0, 1], 
+			[0, 0, 1, 0, 0, 1], 
+			[1, 0, 1, 1, 0, 0], 
+			[1, 1, 0, 1, 0, 1], 
+			[0, 0, 1, 0, 0, 1], 
+			[0, 0, 1, 0, 0, 1]] 
+	duplicate(input) 
+
+---------         --------       -------------        ------------
+# Python3 code to demonstrate working of 
+# Case Counter in String 
+# using map() + sum() + isupper + islower 
+
+# initializing string 
+test_str = "GFG is For GeeKs"
+
+# printing original string 
+print("The original string is : " + test_str) 
+
+# Case Counter in String 
+# using map() + sum() + isupper + islower 
+res_upper = sum(map(str.isupper, test_str)) 
+res_lower = sum(map(str.islower, test_str)) 
+
+# printing result 
+print("The count of Upper case characters : " + str(res_upper)) 
+print("The count of Lower case characters : " + str(res_lower)) 
+
+------------------------------------
+# Python3 code to demonstrate working of 
+# Case Counter in String 
+# using Counter() + isupper() + islower() 
+from collections import Counter 
+
+# initializing string 
+test_str = "GFG is For GeeKs"
+
+# printing original string 
+print("The original string is : " + test_str) 
+
+# Case Counter in String 
+# using Counter() + isupper() + islower() 
+res = Counter("upper" if ele.isupper() else "lower" if ele.islower() 
+			else " " for ele in test_str) 
+
+# printing result 
+print("The count of Upper case characters : " + str(res['upper'])) 
+print("The count of Lower case characters : " + str(res['lower'])) 
+
+--------------------------
+Find largest word in dictionary by deleting some characters of given string
+(dynamic programing topic)
+---------------------
+Find the first repeated word in a string
+
+
